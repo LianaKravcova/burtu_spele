@@ -1,0 +1,67 @@
+body{
+    background-color: azure;
+    background-image: url('https://thumbs.dreamstime.com/b/seamless-winter-pattern-forest-texture-branches-snow-green-background-endless-christmas-decorations-fabric-tile-163063631.jpg');
+    background-repeat:repeat-x;
+}
+.wrapper{
+    width:70%;
+    background: rgb(205, 226, 224);
+    margin: auto;
+    height: 700px;
+}
+h1{
+    text-align: center;
+    color: rgb(182, 80, 62);
+    background: rgb(168, 197, 194);
+    padding:20px;
+}
+ul{
+    text-align: center;
+}
+li{
+    display: inline-block;
+    padding:0 10px 0 10px;
+}
+a:link{
+    font-size: 20px;
+    color:rgb(80, 122, 118);
+}
+a:visited{
+    color:rgb(80, 98, 122);
+}
+a:hover{
+    color:rgb(57, 160, 74);
+}
+a:active{
+    color:rgb(248, 68, 68);
+}
+p{
+    text-align: center;
+    font-size:15px;
+}
+.game{
+    width: 335px;
+    background: white;
+    margin: auto;
+}
+.block{
+    display:inline-block;
+    background: cornflowerblue;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgb(53, 53, 53);
+    text-align: center;
+    vertical-align: middle;
+}
+form{
+    padding-top:30px;
+    text-align: center;
+}
+.pakreisi{
+    text-align: left;
+    padding-left: 350px;
+}
+.palabi{
+    text-align: right;
+    padding-right: 350px;
+}
