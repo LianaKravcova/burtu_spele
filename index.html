@@ -19,50 +19,81 @@
             </ul>
         </div>
         <div class="content">
-            <p><i>Kādi vārdi ir paslēpušies?</i></p>
-            <div class="game">
-                <div class="block">P</div>
-                <div class="block">Ā</div>
-                <div class="block">R</div>
-                <div class="block">S</div>
-                <div class="block">L</div>
-                <div class="block">A</div>
-                <div class="block">E</div>
-                <div class="block">Z</div>
-                <div class="block">I</div>
-                <div class="block">E</div>
-                <div class="block">M</div>
-                <div class="block">A</div>
-                <div class="block">C</div>
-                <div class="block">E</div>
-                <div class="block">P</div>
-                <div class="block">U</div>
-                <div class="block">M</div>
-                <div class="block">S</div>
-                <div class="block">K</div>
-                <div class="block">R</div>
-                <div class="block">I</div>
-                <div class="block">A</div>
-                <div class="block">T</div>
-                <div class="block">R</div>
-                <div class="block">S</div>
-                <div class="block">N</div>
-                <div class="block">I</div>
-                <div class="block">E</div>
-                <div class="block">G</div>
-                <div class="block">S</div>
+           
+            <div class="gameArea">
+                <h3 class="msg"></h3>
+                <input type="text" class="hidden">
+                <button class="btn">Spied, lai sāktu spēli</button>
             </div>
         </div>
-        <div class="forma">
-            <form>
-                <label>Ievadiet vārdu:</label>
-                <input type="text">
-                <input type="submit" value="Ievadīt">
-            </form>
-        </div>
-        <p><div class="pakreisi"><b>Laiks:</b></div> <div class="palabi"><b>Punkti:</b></div></p>
+        <b>Punkti: <h3 class="punkti"></h3></b>
     </div>
     
+<script>
+    //let vardi=['pārsla', 'ziema', 'cepums', 'sniegs', 'svētki']
+    const msg=document.querySelector('.msg');
+    const guess = document.querySelector('input');
+    const btn=document.querySelector('.btn');
+    const punkti=document.querySelector('.punkti');
+    let play=false;
+    let newWords="";
+    let randWords="";
+    let points=0;
+    let sWords=['pārsla', 'ziema', 'cepums', 'sniegs', 'svētki'];
+
+    const createNewWords=()=>{
+        let ranNum=Math.floor(Math.random()*sWords.length);
+        //console.log(ranNum);
+        let newTempSwords=sWords[ranNum];
+        //console.log(newTempSwords.split(""));
+        return newTempSwords;
+
+    }
+
+   const scrambleWords = (arr)=>{
+        for (let i = arr.length-1;i>0; i--){
+            let temp=arr[i];
+            //console.log(temp);
+            let j=Math.floor(Math.random()*(i+1));
+            //console.log(i);
+            //console.log(j);
+
+            arr[i]=arr[j];
+            arr[j]=temp;
+
+        }
+        return arr;
+   }
+
+    btn.addEventListener('click', function(){
+        if(!play){
+            play=true;
+            btn.innerHTML="Uzmini";
+            guess.classList.toggle('hidden');
+            newWords=createNewWords();
+            randWords = scrambleWords(newWords.split("")).join("");
+            //console.log(randWords.join(""));
+            msg.innerHTML= `Uzmini vārdu: ${randWords}`;
+        }else{
+            let tempWord=guess.value;
+            if(tempWord===newWords){
+                //console.log('correct');
+                play=false;
+                msg.innerHTML=`Pareizi! Vārds ir ${newWords}`;
+                btn.innerHTML="Sākt vēlreiz!";
+                guess.classList.toggle('hidden');
+                guess.value="";
+                points=points+1;
+                //console.log(points); 
+                punkti.innerHTML=`${points}`;
+            }else{
+                //console.log('incorrect');
+                msg.innerHTML=`Nepareizi! Mēģini vēlreiz! ${randWords}`;
+            }
+            
+        }
+    })
+</script>
 
 </body>
 </html>
