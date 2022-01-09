@@ -27,7 +27,7 @@
             </div>
         </div>
         <b>Punkti: <h3 class="punkti"></h3></b>
-        <b>Laiks: <h3 class="laiks"></h3></b>
+        <b>Laiks: <h3 class="laiks">1:00</h3></b>
     </div>
     
 <script>
@@ -36,11 +36,14 @@
     const guess = document.querySelector('input');
     const btn=document.querySelector('.btn');
     const punkti=document.querySelector('.punkti');
+    const laiksEl=document.querySelector('.laiks');
     let play=false;
     let newWords="";
     let randWords="";
     let points=0;
-    let laiks=0;
+    const startMin=1;
+    let time=startMin*60;
+    
     let sWords=['pārsla', 'ziema', 'cepums', 'sniegs', 'svētki', 'janvāris', 'februāris', 'decembris'];
 
     const createNewWords=()=>{
@@ -76,8 +79,15 @@
             randWords = scrambleWords(newWords.split("")).join("");
             //console.log(randWords.join(""));
             msg.innerHTML= `Uzmini vārdu: ${randWords}`;
-            //sākt taimeri - nestrādā
-            startTimer();
+            //vēlos sākt taimeri pēc tam, kas uzspied pogu....
+            setInterval(startTimer,1000);
+           /*function startTimer(){
+                const minutes=Math.floor(time/60);
+                let seconds=time%60;
+                laiksEl.innerHTML = `${minutes}: ${seconds}`;
+                time--;
+                if(time==0)//beigt spēli
+                }*/
         }else{
             let tempWord=guess.value;
             if(tempWord===newWords){
@@ -98,13 +108,16 @@
         }
     })
 
+    //setInterval(startTimer,1000);
+
     function startTimer(){
-        for(let i=60;i>0; i--){
-            console.log(i);
-            laiks.innerHTML=`${i}`;
-            setTimeout(startTime, 1000);//nestrādā!
+        const minutes=Math.floor(time/60);
+        let seconds=time%60;
+        laiksEl.innerHTML = `${minutes}: ${seconds}`;
+        time--;
+        //if(time==0)clearInterval(startTimer,1000);
         }
-    }
+    
 </script>
 
 </body>
