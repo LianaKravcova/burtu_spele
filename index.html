@@ -115,7 +115,7 @@
         let seconds=time%60;
         laiksEl.innerHTML = `${minutes}: ${seconds}`;
         time--;
-        //if(time==0)clearInterval(startTimer,1000);
+        if(time<=0)clearInterval(startTimer,1000);
         }
     
 </script>
