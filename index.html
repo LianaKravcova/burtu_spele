@@ -81,13 +81,6 @@
             msg.innerHTML= `Uzmini vārdu: ${randWords}`;
             //vēlos sākt taimeri pēc tam, kas uzspied pogu....
             setInterval(startTimer,1000);
-           /*function startTimer(){
-                const minutes=Math.floor(time/60);
-                let seconds=time%60;
-                laiksEl.innerHTML = `${minutes}: ${seconds}`;
-                time--;
-                if(time==0)//beigt spēli
-                }*/
         }else{
             let tempWord=guess.value;
             if(tempWord===newWords){
@@ -115,7 +108,10 @@
         let seconds=time%60;
         laiksEl.innerHTML = `${minutes}: ${seconds}`;
         time--;
-        if(time<=0)clearInterval(startTimer,1000);
+        if(time<=0){//clearInterval(startTimer,1000);
+                    laiksEl.innerHTML = `Game Over! Jums ir ${points} punkti!`;
+                    }
+
         }
     
 </script>
