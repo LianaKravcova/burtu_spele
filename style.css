@@ -90,9 +90,9 @@ button.btn:hover, button.btn:focus, button.btn:active{
     letter-spacing:0.125rem;
     word-spacing: 0.2rem;
 }
-li.saraksts{
-    display: block;
+ol.sar{
+    list-style-type: upper-roman;
 }
-ul.sar{
-    list-style: square;
+li.saraksts{
+    display: flex;
 }
