@@ -26,8 +26,8 @@
                 <button class="btn">Spied, lai sāktu spēli</button>
             </div>
         </div>
-        <b>Punkti: <h3 class="punkti"></h3></b>
-        <b>Laiks: <h3 class="laiks">1:00</h3></b>
+        <b><h3 class="punkti">Punkti: - </h3></b>
+        <b><h3 class="laiks">Laiks: 2:00</h3></b>
     </div>
     
 <script>
@@ -41,10 +41,10 @@
     let newWords="";
     let randWords="";
     let points=0;
-    const startMin=1;
+    const startMin=2;
     let time=startMin*60;
     
-    let sWords=['pārsla', 'ziema', 'cepums', 'sniegs', 'svētki', 'janvāris', 'februāris', 'decembris'];
+    let sWords=['pārsla', 'prieks', 'kalns', 'kamanas', 'slēpes', 'smiekli', 'ziema', 'cepums', 'sniegs', 'svētki', 'janvāris', 'februāris', 'decembris'];
 
     const createNewWords=()=>{
         let ranNum=Math.floor(Math.random()*sWords.length);
@@ -92,7 +92,7 @@
                 guess.value="";
                 points=points+1;
                 //console.log(points); 
-                punkti.innerHTML=`${points}`;
+                punkti.innerHTML=`Punkti: ${points}`;
             }else{
                 //console.log('incorrect');
                 msg.innerHTML=`Nepareizi! Mēģini vēlreiz! ${randWords}`;
@@ -106,7 +106,8 @@
     function startTimer(){
         const minutes=Math.floor(time/60);
         let seconds=time%60;
-        laiksEl.innerHTML = `${minutes}: ${seconds}`;
+        if(seconds<10)seconds='0'+seconds;
+        laiksEl.innerHTML = `Laiks: ${minutes}:${seconds}`;
         time--;
         if(time<=0){//clearInterval(startTimer,1000);
                     laiksEl.innerHTML = `Game Over! Jums ir ${points} punkti!`;
