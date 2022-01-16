@@ -93,7 +93,6 @@ button.btn:hover, button.btn:focus, button.btn:active{
 li.saraksts{
     display: block;
 }
-ol{
-    list-style-type: upper-roman;
-    list-style-position: inside;
+ul.sar{
+    list-style: square;
 }
